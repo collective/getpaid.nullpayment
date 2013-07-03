@@ -11,17 +11,18 @@ Distutils setup
 import os
 from setuptools import setup, find_packages
 
+
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup(
     name='getpaid.nullpayment',
     version='0.5.1dev',
-    license = 'BSD',
+    license='BSD',
     author='Getpaid Community',
     author_email='getpaid-dev@googlegroups.com',
     description='Get paid null payment process functionality',
-    long_description = (
+    long_description=(
         read('README.txt')
         + '\n' +
         read('CHANGES.txt')
@@ -32,7 +33,7 @@ setup(
         read('src', 'getpaid', 'nullpayment', 'README.txt')
         + '\n'
         ),
-    classifiers = [
+    classifiers=[
         "Framework :: Plone",
         "Framework :: Zope3",
         "Programming Language :: Python",
@@ -44,11 +45,16 @@ setup(
         ],
     url='http://code.google.com/p/getpaid',
     packages=find_packages('src'),
-    package_dir={'':'src'},
+    package_dir={'': 'src'},
     namespace_packages=['getpaid'],
     include_package_data=True,
-    install_requires = ['setuptools',
-                        'getpaid.core>=0.9.0',
-                       ],
-    zip_safe = False,
+    install_requires=[
+        'setuptools',
+        'getpaid.core>=0.9.0',
+    ],
+    zip_safe=False,
+    entry_points="""
+    [z3c.autoinclude.plugin]
+    target = plone
+    """,
     )
